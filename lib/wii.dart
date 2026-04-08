@@ -2,7 +2,7 @@ class wii {
   static const String app = 'LoveYe';
   static const String id = 'loveye';
   static const String repo = 'loveyee';
-  static const String desc = 'La mejor app para registrar y dividir gastos con amigos';
+  static const String desc = 'Amor por tus ojitos - Consejos y cuidado de salud ocular';
   static const int lanzamiento = 2026;
   static const String by = '@wilder.taype';
   static const String link = 'https://wtaype.github.io/';

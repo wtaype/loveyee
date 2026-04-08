@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../wicss.dart';
-import 'pantalla1/pantalla1.dart';
-import 'pantalla2/pantalla2.dart';
-import 'pantalla3/pantalla3.dart';
-import 'pantalla4/pantalla4.dart';
-import 'pantalla5/pantalla5.dart';
+import 'pantalla1/inicio.dart';
+import 'pantalla2/prevencion.dart';
+import 'pantalla3/alimentos.dart';
+import 'pantalla4/tratamiento.dart';
+import 'pantalla5/acerca.dart';
 
 class PantallaPrincipal extends StatefulWidget {
   const PantallaPrincipal({super.key});
@@ -17,15 +17,15 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
   late final _pg = PageController();
 
   static const _pantallas = [
-    PantallaRegistrar(), PantallaGastos(), PantallaMensajes(), PantallaArreglar(), PantallaConfiguracion(),
+    PantallaInicio(), PantallaPrevencion(), PantallaAlimentos(), PantallaTratamiento(), PantallaAcerca(),
   ];
 
   static const _items = [
-    BottomNavigationBarItem(icon: Icon(Icons.add_circle_outline), activeIcon: Icon(Icons.add_circle), label: 'Registrar'),
-    BottomNavigationBarItem(icon: Icon(Icons.receipt_long_outlined), activeIcon: Icon(Icons.receipt_long), label: 'Gastos'),
-    BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline), activeIcon: Icon(Icons.chat_bubble), label: 'Mensajes'),
-    BottomNavigationBarItem(icon: Icon(Icons.verified_outlined), activeIcon: Icon(Icons.verified), label: 'Arreglar'),
-    BottomNavigationBarItem(icon: Icon(Icons.settings_outlined), activeIcon: Icon(Icons.settings), label: 'Config'),
+    BottomNavigationBarItem(icon: Icon(Icons.home_outlined), activeIcon: Icon(Icons.home), label: 'Inicio'),
+    BottomNavigationBarItem(icon: Icon(Icons.shield_outlined), activeIcon: Icon(Icons.shield), label: 'Prevención'),
+    BottomNavigationBarItem(icon: Icon(Icons.restaurant_outlined), activeIcon: Icon(Icons.restaurant), label: 'Alimentos'),
+    BottomNavigationBarItem(icon: Icon(Icons.healing_outlined), activeIcon: Icon(Icons.healing), label: 'Tratamiento'),
+    BottomNavigationBarItem(icon: Icon(Icons.favorite_outline), activeIcon: Icon(Icons.favorite), label: 'Acerca'),
   ];
 
   @override
