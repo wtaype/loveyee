@@ -16,25 +16,29 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
   int _idx = 0;
   late final _pg = PageController();
 
-  static const _pantallas = [
-    PantallaInicio(), PantallaPrevencion(), PantallaAlimentos(), PantallaTratamiento(), PantallaAcerca(),
-  ];
-
-  static const _items = [
-    BottomNavigationBarItem(icon: Icon(Icons.home_outlined), activeIcon: Icon(Icons.home), label: 'Inicio'),
-    BottomNavigationBarItem(icon: Icon(Icons.shield_outlined), activeIcon: Icon(Icons.shield), label: 'Prevención'),
-    BottomNavigationBarItem(icon: Icon(Icons.restaurant_outlined), activeIcon: Icon(Icons.restaurant), label: 'Alimentos'),
-    BottomNavigationBarItem(icon: Icon(Icons.healing_outlined), activeIcon: Icon(Icons.healing), label: 'Tratamiento'),
-    BottomNavigationBarItem(icon: Icon(Icons.favorite_outline), activeIcon: Icon(Icons.favorite), label: 'Acerca'),
-  ];
+  // Función para cambiar de página
+  void _cambiarPagina(int index) {
+    setState(() => _idx = index);
+    _pg.animateToPage(index, duration: AppCSS.trans1, curve: Curves.easeInOut);
+  }
 
   @override
   Widget build(BuildContext c) => Scaffold(
     backgroundColor: AppCSS.bgLight,
-    body: PageView(controller: _pg, onPageChanged: (i) => setState(() => _idx = i), children: _pantallas),
+    body: PageView(
+      controller: _pg,
+      onPageChanged: (i) => setState(() => _idx = i),
+      children: [
+        PantallaInicio(onNavigate: _cambiarPagina), // Pasar función
+        const PantallaPrevencion(),
+        const PantallaAlimentos(),
+        const PantallaTratamiento(),
+        const PantallaAcerca(),
+      ],
+    ),
     bottomNavigationBar: BottomNavigationBar(
       currentIndex: _idx,
-      onTap: (i) { setState(() => _idx = i); _pg.animateToPage(i, duration: AppCSS.trans1, curve: Curves.easeInOut); },
+      onTap: _cambiarPagina,
       type: BottomNavigationBarType.fixed,
       backgroundColor: AppCSS.white,
       selectedItemColor: AppCSS.primary,
@@ -45,6 +49,14 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
       items: _items,
     ),
   );
+
+  static const _items = [
+    BottomNavigationBarItem(icon: Icon(Icons.home_outlined), activeIcon: Icon(Icons.home), label: 'Inicio'),
+    BottomNavigationBarItem(icon: Icon(Icons.shield_outlined), activeIcon: Icon(Icons.shield), label: 'Prevención'),
+    BottomNavigationBarItem(icon: Icon(Icons.restaurant_outlined), activeIcon: Icon(Icons.restaurant), label: 'Alimentos'),
+    BottomNavigationBarItem(icon: Icon(Icons.healing_outlined), activeIcon: Icon(Icons.healing), label: 'Tratamiento'),
+    BottomNavigationBarItem(icon: Icon(Icons.favorite_outline), activeIcon: Icon(Icons.favorite), label: 'Acerca'),
+  ];
 
   @override
   void dispose() { _pg.dispose(); super.dispose(); }

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'inicio/cargando.dart';
+import 'pantallas/principal.dart';
 import 'wicss.dart';
 import 'wii.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: AppCSS.bgLight, systemNavigationBarColor: AppCSS.bgLight,
   ));
@@ -20,6 +17,6 @@ class MiApp extends StatelessWidget {
   @override
   Widget build(BuildContext c) => MaterialApp(
     title: wii.app, debugShowCheckedModeBanner: false,
-    theme: AppStyle.tema, home: const PantallaCargando(),
+    theme: AppStyle.tema, home: const PantallaPrincipal(),
   );
 }

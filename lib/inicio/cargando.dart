@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../wicss.dart';
-import '../wiauth/login.dart';
-import '../wiauth/auth_fb.dart';
 import '../pantallas/principal.dart';
 
 class PantallaCargando extends StatefulWidget {
@@ -14,19 +12,38 @@ class _PantallaCargandoState extends State<PantallaCargando> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    // Ir directo a la pantalla principal después de 1 segundo
+    Future.delayed(const Duration(seconds: 1), () {
       if (!mounted) return;
       Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (_) => AuthServicio.estaLogueado ? const PantallaPrincipal() : const PantallaLogin(),
+        builder: (_) => const PantallaPrincipal(),
       ));
     });
   }
 
   @override
-  Widget build(BuildContext c) => const Scaffold(
-    backgroundColor: AppCSS.bgLight,
-    body: Center(child: CircularProgressIndicator(
-      strokeWidth: 4, valueColor: AlwaysStoppedAnimation<Color>(AppCSS.white), backgroundColor: AppCSS.primary,
+  Widget build(BuildContext c) => Scaffold(
+    backgroundColor: AppCSS.primary,
+    body: Center(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // Logo circular
+        Container(
+          width: 120,
+          height: 120,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppCSS.white,
+            boxShadow: AppCSS.shadow,
+          ),
+          child: ClipOval(child: AppCSS.logo),
+        ),
+        const SizedBox(height: 24),
+        const CircularProgressIndicator(
+          strokeWidth: 3,
+          valueColor: AlwaysStoppedAnimation<Color>(AppCSS.white),
+        ),
+      ],
     )),
   );
 }
