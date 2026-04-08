@@ -6,16 +6,16 @@ class wii {
   static const int lanzamiento = 2026;
   static const String by = '@wilder.taype';
   static const String link = 'https://wtaype.github.io/';
-  static const String version = 'v11.1.1';
+  static const String version = 'v12.10';
 }
 
 /** ACTUALIZACIÓN PRINCIPAL ONE DEV [MAIN] (1)
-git add . ; git commit -m "Actualizacion Principal v11.10.10" ; git push origin main
+git add . ; git commit -m "Actualizacion Principal v12.10.10" ; git push origin main
 
 //  Actualizar versiones de seguridad [TAG NUEVO] (2)
-git tag v11 -m "Version v11" ; git push origin v11
+git tag v12 -m "Version v12" ; git push origin v12
 
 // Actualizar versiones de seguridad [TAG REMPLAZO] (3)
-git tag -d v11 ; git tag v11 -m "Version v11 actualizada" ; git push origin v11 --force
+git tag -d v12 ; git tag v12 -m "Version v12 actualizada" ; git push origin v12 --force
 
  ACTUALIZACION TAG[END] */
